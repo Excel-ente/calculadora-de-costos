@@ -47,8 +47,14 @@ Desarrollada con HTML, CSS y JavaScript puro, esta calculadora no requiere frame
 calculadora-de-costos/
 │
 ├── index.html          # Estructura principal y contenido
-├── styles.css          # Estilos y diseño responsivo
+├── style.css          # Estilos y diseño responsivo
 ├── script.js           # Funcionalidades y cálculos
+├── guia_costos.html          # Estructura de la calculadora de costo
+├── guia_costos_style.css          # Estilos y diseño de la calculadora de costo
+├── guia_costos_script.js           # Funcionalidades y cálculos de la calculadora de costo
+├── politica-privacidad.html      # politica-privacidad.html
+├── acerca-de.html
+├── contacto.html
 └── README.md           # Documentación del proyecto
 ```
 
@@ -57,7 +63,7 @@ calculadora-de-costos/
 1. **Clona el repositorio**:
 
 ```shellscript
-git clone https://github.com/Excel-ente/como_calcular_el_costo_de_tus_recetas
+git clone https://github.com/Excel-ente/calculadora-de-costos
 ```
 
 
