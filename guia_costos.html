@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Guía Interactiva de Costos | Calculadora de Recetas</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="guia_costos_style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.5.28/jspdf.plugin.autotable.min.js"></script>
+</head>
+<body>
+
+<main>
+    <section class="cost-guide-section">
+        <div class="container">
+            <h1>🧁 Guía Interactiva: ¡Calculá el Costo de tu Receta!</h1>
+            <p class="section-intro">Te acompañamos paso a paso para que descubras cuánto te cuesta hacer tus delicias y a qué precio venderlas. ¡Es más fácil de lo que pensás!</p>
+
+            <div class="cost-guide-container">
+                <div class="progress-bar-container">
+                    <div class="progress-bar">
+                        <div class="progress-bar-fill" id="progressBarFill" style="width: 0%;"></div>
+                    </div>
+                    <div class="progress-steps">
+                        <span class="progress-step active" data-step="1">Nombre</span>
+                        <span class="progress-step" data-step="2">Ingredientes</span>
+                        <span class="progress-step" data-step="3">Otros Costos</span>
+                        <span class="progress-step" data-step="4">Tu Tiempo</span>
+                        <span class="progress-step" data-step="5">Gastos Fijos</span>
+                        <span class="progress-step" data-step="6">Precio Final</span>
+                    </div>
+                </div>
+
+                <div class="step active" id="step-1">
+                    <h2>Paso 1: ¿Cómo se llama tu creación? 🏷️</h2>
+                    <div class="form-group">
+                        <label for="guide-recipe-name">Nombre de la Torta, Postre, etc.:</label>
+                        <input type="text" id="guide-recipe-name" placeholder="Ej: Torta Matilda de Chocolate" required>
+                        <div class="error-message hidden" id="error-recipe-name"></div>
+                    </div>
+                    <div class="step-nav">
+                        <button class="btn btn-primary next-step-btn">Siguiente →</button>
+                    </div>
+                </div>
+
+                <div class="step" id="step-2">
+                    <h2>Paso 2: Los Ingredientes 🛒</h2>
+                    <p>Agregá uno por uno los ingredientes que usaste.</p>
+
+                    <div class="add-ingredient-guide-form calculator-card">
+                        <h4>Añadir Ingrediente:</h4>
+                        <div class="form-grid compact-form-grid">
+                            <div class="form-group">
+                                <label for="guide-ing-name">Ingrediente:</label>
+                                <input type="text" id="guide-ing-name" placeholder="Ej: Harina 0000">
+                                <div class="error-message hidden" id="error-ing-name"></div>
+                            </div>
+                            <div class="form-group">
+                                <label for="guide-ing-price">Compra: Precio ($)</label>
+                                <input type="number" id="guide-ing-price" placeholder="Ej: 800" min="0.01" step="any">
+                                <div class="error-message hidden" id="error-ing-price"></div>
+                            </div>
+                            <div class="form-group">
+                                <label for="guide-ing-total-qty">Compra: Cantidad Total</label>
+                                <div class="input-with-select">
+                                    <input type="number" id="guide-ing-total-qty" placeholder="Ej: 1" min="0.001" step="any">
+                                    <select id="guide-ing-total-unit">
+                                        <option value="kg">kg</option>
+                                        <option value="g">g</option>
+                                        <option value="lt">lt</option>
+                                        <option value="ml">ml</option>
+                                        <option value="unidades">unid</option>
+                                    </select>
+                                </div>
+                                 <div class="error-message hidden" id="error-ing-total-qty"></div>
+                            </div>
+                            <div class="form-group">
+                                <label for="guide-ing-used-qty">Cantidad Usada</label>
+                                <div class="input-with-select">
+                                     <input type="number" id="guide-ing-used-qty" placeholder="Ej: 300" min="0" step="any">
+                                     <select id="guide-ing-used-unit">
+                                         </select>
+                                </div>
+                                <div id="guide-unit-warning" class="unit-warning hidden"></div>
+                                <div class="error-message hidden" id="error-ing-used-qty"></div>
+                            </div>
+                        </div>
+                        <button id="add-ingredient-guide-btn" class="btn btn-secondary">Agregar Ingrediente</button>
+                        <div class="error-message hidden" id="error-add-ingredient"></div>
+                    </div>
+
+                    <h4>Ingredientes Agregados:</h4>
+                    <div class="table-responsive-container">
+                         <ul id="guide-ingredients-list" class="ingredients-summary-list">
+                             <li class="list-header">
+                                 <span>Ingrediente</span>
+                                 <span>Costo</span>
+                                 <span>Acción</span>
+                             </li>
+                             <li class="list-empty hidden">Aún no hay ingredientes.</li>
+                         </ul>
+                    </div>
+                    <div class="ingredients-total">
+                        <strong>Costo Total Ingredientes: <span id="guide-ingredients-total">$0.00</span></strong>
+                    </div>
+                     <div class="error-message hidden" id="error-ingredients-list">Debe agregar al menos un ingrediente.</div>
+
+                    <div class="step-nav">
+                        <button class="btn btn-outline prev-step-btn">← Anterior</button>
+                        <button class="btn btn-primary next-step-btn">Siguiente →</button>
+                    </div>
+                </div>
+
+                <div class="step" id="step-3">
+                    <h2>Paso 3: Packaging y Horneado 📦🔥</h2>
+                    <p>Estimá cuánto gastas en la caja, base, y el consumo de luz/gas específicamente para ESTA receta completa (valores opcionales).</p>
+                    <div class="form-grid">
+                         <div class="form-group">
+                             <label for="guide-packaging-cost">Costo de Packaging ($):</label>
+                             <input type="number" id="guide-packaging-cost" placeholder="Ej: 450 (caja + base)" min="0" step="any" value="0">
+                              <div class="error-message hidden" id="error-packaging-cost"></div>
+                         </div>
+                         <div class="form-group">
+                             <label for="guide-baking-cost">Costo Estimado de Horneado/Servicios ($):</label>
+                             <input type="number" id="guide-baking-cost" placeholder="Ej: 150 (luz/gas)" min="0" step="any" value="0">
+                             <small>Podés usar la Calculadora Detallada del sitio para un cálculo más exacto si querés.</small>
+                              <div class="error-message hidden" id="error-baking-cost"></div>
+                         </div>
+                    </div>
+                     <div class="step-nav">
+                        <button class="btn btn-outline prev-step-btn">← Anterior</button>
+                        <button class="btn btn-primary next-step-btn">Siguiente →</button>
+                    </div>
+                </div>
+
+                <div class="step" id="step-4">
+                    <h2>Paso 4: ¡Tu Tiempo Vale! ⏳</h2>
+                    <p>¿Cuánto tiempo te llevó preparar esta receta y cuánto vale tu hora de trabajo?</p>
+                     <div class="form-grid">
+                         <div class="form-group">
+                             <label for="guide-time">Tiempo Total de Elaboración (en Minutos):</label>
+                             <input type="number" id="guide-time" placeholder="Ej: 180 (para 3 horas)" min="0" step="1" required>
+                              <div class="error-message hidden" id="error-time"></div>
+                         </div>
+                         <div class="form-group">
+                             <label for="guide-hourly-rate">¿Cuánto querés ganar por Hora de Trabajo ($)?:</label>
+                             <input type="number" id="guide-hourly-rate" placeholder="Ej: 2500" min="0" step="any" required>
+                              <div class="error-message hidden" id="error-hourly-rate"></div>
+                         </div>
+                     </div>
+                     <div class="calculated-result">
+                         Costo de tu Mano de Obra: <strong id="guide-labor-cost-display">$0.00</strong>
+                     </div>
+                     <div class="step-nav">
+                        <button class="btn btn-outline prev-step-btn">← Anterior</button>
+                        <button class="btn btn-primary next-step-btn">Siguiente →</button>
+                    </div>
+                </div>
+
+                <div class="step" id="step-5">
+                     <h2>Paso 5: Porción de Gastos Fijos 🏠</h2>
+                     <p>Es el pedacito de tus gastos generales (alquiler, monotributo, etc.) que le "cargás" a cada producto (opcional).</p>
+                     <div class="form-group">
+                         <label for="guide-fixed-cost">Monto de Gasto Fijo por Producto ($):</label>
+                         <input type="number" id="guide-fixed-cost" placeholder="Usá el valor de la 'Calculadora de Gastos Fijos'" min="0" step="any" value="0">
+                         <small>Si no lo calculaste, podés ir a la sección <a href="index.html#fixed-costs-calculator" target="_blank">Calculadora de Gastos Fijos</a> (se abre en otra pestaña).</small>
+                          <div class="error-message hidden" id="error-fixed-cost"></div>
+                     </div>
+                     <div class="step-nav">
+                        <button class="btn btn-outline prev-step-btn">← Anterior</button>
+                        <button class="btn btn-primary next-step-btn">Siguiente →</button>
+                    </div>
+                </div>
+
+                <div class="step" id="step-6">
+                    <h2>Paso 6: ¡El Precio Final! 🤑</h2>
+                    <p>Definamos tu ganancia y cuántas porciones rinde tu receta.</p>
+                     <div class="form-grid">
+                         <div class="form-group">
+                             <label for="guide-profit">Porcentaje de Ganancia deseado (%):</label>
+                             <input type="number" id="guide-profit" value="40" min="0" step="1" required>
+                             <div class="error-message hidden" id="error-profit"></div>
+                         </div>
+                         <div class="form-group">
+                             <label for="guide-portions">¿Cuántas porciones rinde esta receta?</label>
+                             <input type="number" id="guide-portions" value="12" min="1" step="1" required>
+                             <div class="error-message hidden" id="error-portions"></div>
+                         </div>
+                     </div>
+                     <button id="calculate-final-guide-btn" class="btn btn-primary full-width">¡Calcular Precio Sugerido!</button>
+
+                     <div id="guide-final-results" class="final-results-card hidden">
+                         <h3>Resumen del Cálculo para: <span id="res-recipe-name"></span></h3>
+                         <p>Costo Total de Materiales: <strong id="res-material">$0.00</strong></p>
+                         <p>Costo de Mano de Obra: <strong id="res-labor">$0.00</strong></p>
+                         <p>Costo de Gastos Fijos: <strong id="res-fixed">$0.00</strong></p>
+                         <hr>
+                         <p class="total-cost-row">COSTO TOTAL DE LA RECETA: <strong id="res-total-cost">$0.00</strong></p>
+                         <hr>
+                         <p>Tu Ganancia Estimada (<span id="res-profit-perc"></span>%): <strong id="res-profit">$0.00</strong></p>
+                         <p class="final-price-row">PRECIO DE VENTA SUGERIDO: <strong id="res-final-price">$0.00</strong></p>
+                         <p>Precio Sugerido por Porción (x<span id="res-portions"></span>): <strong id="res-portion-price">$0.00</strong></p>
+                         <p class="disclaimer small-text">Recordá que este es un precio sugerido. ¡Considerá también tu valor diferencial y los precios de tu competencia!</p>
+
+                         <div class="pdf-actions">
+                            <button id="generate-pdf-btn" class="btn btn-secondary" disabled>
+                                <svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 512 512" fill="currentColor"><path d="M0 64C0 28.7 28.7 0 64 0H224V128c0 17.7 14.3 32 32 32H384V304H176c-35.3 0-64 28.7-64 64V512H64c-35.3 0-64-28.7-64-64V64zm384 64H256V0L384 128zM176 352h32c30.9 0 56 25.1 56 56s-25.1 56-56 56H192v32c0 8.8-7.2 16-16 16s-16-7.2-16-16V464 416 352zm64 88c13.3 0 24-10.7 24-24s-10.7-24-24-24H192v48h48zM480 352h-8c-6.6 0-12 5.4-12 12v100c0 6.6 5.4 12 12 12h8c6.6 0 12-5.4 12-12V364c0-6.6-5.4-12-12-12zM416 352c-8.8 0-16 7.2-16 16v80c0 8.8 7.2 16 16 16s16-7.2 16-16V368c0-8.8-7.2-16-16-16z"/></svg>
+                                Generar PDF
+                            </button>
+                            <div id="pdf-loader" class="loader hidden"></div>
+                            <div class="error-message hidden" id="error-pdf"></div>
+                         </div>
+                     </div>
+
+                     <div class="step-nav">
+                        <button class="btn btn-outline prev-step-btn">← Anterior</button>
+                    </div>
+                </div>
+
+            </div> </div> </section>
+</main>
+
+<dialog id="post-pdf-modal" class="post-download-modal">
+    <div class="modal-content">
+        <div class="modal-logo-container">
+            <img src="logo_excelente.svg" alt="Logo Excel-ente" class="modal-logo">
+        </div>
+        <h3>¡Gracias!</h3>
+        <p>Gracias por usar la calculadora de costos de Excel-ente, ¡espero que te haya súper servido! 😊</p>
+        <p class="contribution-text">Si te gustó y querés apoyar este proyecto gratuito para que siga creciendo, podés hacerlo de estas maneras:</p>
+        <div class="modal-actions">
+            <a href="https://paypal.me/turkienich" target="_blank" rel="noopener noreferrer" class="btn btn-secondary modal-btn">
+                🚀 Realizar una donación
+            </a>
+            <a href="https://www.youtube.com/channel/UC0oyLTDH-VQ_4vO9fNOjdGQ/join" target="_blank" rel="noopener noreferrer" class="btn btn-primary modal-btn">
+                ▶️ Suscribirse a YouTube
+            </a>
+        </div>
+    </div>
+</dialog>
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.5.28/jspdf.plugin.autotable.min.js"></script>
+<script src="script.js"></script> 
+<script src="guia_costos_script.js"></script>
+
+</body>
+</html>

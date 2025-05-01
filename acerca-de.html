@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Acerca de [Tu Nombre o Nombre del Proyecto] | Calculadora de Recetas</title> 
+    <meta name="description" content="Conoce más sobre [Tu Nombre], el creador de Calculadora de Recetas, y su misión de ayudar a emprendedores.">
+    <link rel="stylesheet" href="style.css"> 
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        main { padding-top: 2rem; padding-bottom: 3rem; }
+        .about-content img.profile-pic { /* Estilo opcional para una foto */
+            display: block;
+            margin: 1rem auto 2rem;
+            border-radius: 50%; /* Foto redonda */
+            max-width: 180px;
+            border: 5px solid var(--pink-100);
+            box-shadow: var(--shadow-md);
+        }
+        .about-content h2 {
+            margin-top: 2.5rem;
+            margin-bottom: 1rem;
+            text-align: center;
+            font-size: 1.6rem;
+            color: var(--purple-800);
+        }
+        .about-content p {
+            margin-bottom: 1rem;
+            text-align: left; /* O 'justify' si prefieres */
+            line-height: 1.7;
+            color: var(--purple-700); 
+        }
+        .about-content .highlight { /* Para resaltar alguna frase */
+             background-color: var(--pink-50);
+             padding: 0.1rem 0.4rem;
+             border-radius: 4px;
+             font-weight: 500;
+        }
+         .about-content .cta-section { /* Sección Llamada a la acción */
+             background-color: var(--purple-50);
+             padding: 2rem;
+             margin-top: 3rem;
+             border-radius: var(--radius);
+             text-align: center;
+         }
+          .about-content .cta-section p {
+              text-align: center;
+              margin-bottom: 1.5rem;
+          }
+           .container {
+               max-width: 800px; /* Limitar ancho para mejor lectura */
+           }
+           .video-container { /* Contenedor para video de YT */
+                position: relative;
+                padding-bottom: 56.25%; /* 16:9 aspect ratio */
+                height: 0;
+                overflow: hidden;
+                max-width: 100%;
+                background: #000;
+                margin: 2rem 0;
+                border-radius: var(--radius);
+                box-shadow: var(--shadow-lg);
+           }
+            .video-container iframe {
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                border: 0;
+           }
+    </style>
+</head>
+<body>
+    <header class="site-header">
+        <div class="container logo-container">
+            <a href="index.html" aria-label="Volver al inicio">
+                <img src="logo.svg" alt="Logo Excel-ente" class="logo-image" style="max-height: 100px;">
+            </a>
+        </div>
+    </header>
+
+    <main>
+        <div class="container">
+            <div class="about-content">
+                <h1>¡Hola! Soy Kevin 👋</h1>
+
+                <p>Detrás de <span class="highlight">Excel-ente</span> hay una sola idea: <em>hacerte la vida más fácil</em> con herramientas digitales gratuitas y al grano. No me considero un gurú creativo; solo un tipo curioso que disfruta compartir lo que aprende.</p>
+
+                <p>Las soluciones tienen que ser <span class="highlight">simples, prácticas y accesibles</span>. Por eso combino mi experiencia en Python/Django con muchos índices de mate para crear cosas que cualquiera pueda aplicar en su negocio, sin tecnicismos ni vueltas.</p>
+
+                <h2>¿Qué vas a encontrar en el canal?</h2>
+
+                <p>Tutoriales claros, hojas de cálculo para descargar y guías paso a paso: desde costear una torta hasta automatizar un reporte. Todo explicado con ejemplos reales, lenguaje cotidiano y, cuando se puede, un toque de humor.</p>
+
+                <div class="video-container">
+                    <iframe
+                        src="https://www.youtube.com/embed/wi4FaHYXtig"
+                        title="YouTube video player"
+                        frameborder="0"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                        allowfullscreen>
+                    </iframe>
+                </div>
+
+                <p>Si lo que ves acá te sirve, te invito a sumarte a la comunidad y compartir tus avances. ¡Mientras más aprendemos juntos, mejor!</p>
+
+                <div class="cta-section">
+                    <h2>¡Conectemos!</h2>
+                    <p>Suscribite al canal o seguime en redes para no perderte las próximas herramientas.</p>
+                    <a href="https://www.youtube.com/@excel-ente" target="_blank" rel="noopener noreferrer" class="btn btn-primary">Suscribirme en YouTube</a>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="social-links">
+                <a href="https://www.instagram.com/excel.entes" target="_blank" rel="noopener noreferrer" aria-label="Instagram Excel-ente" title="Instagram Excel-ente">
+                    <!-- SVG Instagram -->
+                </a>
+                <a href="https://www.youtube.com/@excel-ente" target="_blank" rel="noopener noreferrer" aria-label="Youtube Excel-ente" title="Youtube Excel-ente">
+                    <!-- SVG YouTube -->
+                </a>
+                <a href="https://www.tiktok.com/@excel.entes" target="_blank" rel="noopener noreferrer" aria-label="TikTok Excel-ente" title="TikTok Excel-ente">
+                    <!-- SVG TikTok -->
+                </a>
+            </div>
+
+            <p class="footer-note">Hecho con ❤️ por <a href="https://excel-ente.com/" target="_blank" rel="noopener noreferrer">Excel-ente</a> para ayudar a emprendedor@s como vos 🚀</p>
+
+            <p class="copyright">
+                © <span id="current-year"></span> Excel-ente | Todos los derechos reservados |
+                <a href="politica-privacidad.html">Política de Privacidad</a> |
+                <a href="acerca-de.html">Acerca de</a> |
+                <a href="contacto.html">Contacto</a>
+            </p>
+        </div>
+    </footer>
+
+    <script>
+        document.getElementById('current-year').textContent = new Date().getFullYear();
+    </script>
+</body>
+
+
+</html>

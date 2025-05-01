@@ -1,0 +1,535 @@
+/* Estilos específicos para la Guía Interactiva de Costos */
+/* Asegúrate que style.css (con variables --) se cargue antes */
+
+.cost-guide-section {
+    padding: 2rem 0; /* Menos padding para más espacio */
+}
+
+.cost-guide-container {
+    background-color: var(--white);
+    padding: 1.5rem; /* Padding ajustado */
+    border-radius: var(--radius);
+    box-shadow: var(--shadow-lg);
+    max-width: 800px; /* Un poco más ancho */
+    margin: 1.5rem auto;
+}
+
+/* Barra de Progreso */
+.progress-bar-container {
+    margin-bottom: 2rem;
+    padding: 0 0.5rem; /* Padding para que no toque los bordes */
+}
+.progress-bar {
+    width: 100%;
+    background-color: var(--gray-200);
+    border-radius: 99px;
+    overflow: hidden;
+    height: 10px; /* Más delgada */
+}
+.progress-bar-fill {
+    height: 100%;
+    width: 0%; /* Inicia en 0, JS la controla */
+    background: linear-gradient(to right, var(--pink-300), var(--pink-500));
+    border-radius: 99px;
+    transition: width 0.4s ease-in-out;
+}
+.progress-steps {
+    display: flex;
+    justify-content: space-between; /* Distribuir equitativamente */
+    margin-top: 0.5rem;
+}
+.progress-step {
+    font-size: 0.75rem; /* Consistente */
+    color: var(--gray-400);
+    font-weight: 500;
+    text-align: center;
+    flex: 1; /* Ocupar espacio igual */
+    padding: 0 2px; /* Pequeño padding */
+    transition: color 0.4s ease, font-weight 0.4s ease;
+    position: relative; /* Para pseudo-elemento */
+}
+.progress-step.active {
+    color: var(--pink-700);
+    font-weight: 700;
+}
+/* Línea visual conectora (opcional) */
+.progress-step:not(:last-child)::after {
+    content: '';
+    position: absolute;
+    top: -1.2rem; /* Ajustar arriba de la barra */
+    left: 50%;
+    right: -50%;
+    height: 2px;
+    background-color: var(--gray-200);
+    z-index: -1; /* Detrás del texto */
+}
+.progress-step.active::after {
+     background-color: var(--pink-400); /* Cambiar color si está activo */
+}
+/* Ocultar línea después del último */
+.progress-step:last-child::after {
+    display: none;
+}
+
+
+/* Pasos */
+.step {
+    display: none;
+    border: 1px solid var(--pink-100);
+    padding: 1.5rem;
+    margin-top: 1.5rem;
+    border-radius: var(--radius);
+    background-color: var(--pink-50);
+    animation: fadeIn 0.5s ease;
+}
+.step.active {
+    display: block;
+}
+.step h2 {
+    text-align: center;
+    color: var(--purple-800);
+    margin-bottom: 1.5rem;
+    font-size: 1.6rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+}
+.step p {
+    text-align: center;
+    margin-bottom: 1.5rem;
+    color: var(--purple-700);
+}
+
+/* Formulario de Añadir Ingrediente */
+.add-ingredient-guide-form {
+    margin-bottom: 2rem;
+    padding: 1.5rem;
+    background-color: var(--white);
+    border-radius: var(--radius);
+    border: 1px solid var(--pink-200);
+}
+.add-ingredient-guide-form h4 {
+    text-align: center;
+    margin-bottom: 1rem;
+    color: var(--pink-700);
+}
+/* Grid Compacto para Ingredientes */
+.compact-form-grid {
+    display: grid;
+    grid-template-columns: 1fr; /* Mobile: una columna */
+    gap: 1rem;
+    margin-bottom: 1rem;
+}
+
+/* Estilos de inputs y labels heredados de style.css */
+/* Ajustes específicos si son necesarios */
+.input-with-select select {
+    min-width: 75px; /* Ajuste para unidades */
+}
+
+/* Mensajes de Error */
+.error-message {
+    color: var(--error-color);
+    font-size: 0.8rem;
+    margin-top: 4px;
+    font-weight: 500;
+}
+.error-message.hidden {
+    display: none;
+}
+/* Resaltar input con error */
+input.invalid, select.invalid {
+    border-color: var(--error-color) !important;
+    box-shadow: 0 0 0 1px var(--error-color) !important;
+}
+
+
+/* Lista Resumen de Ingredientes */
+.table-responsive-container {
+    overflow-x: auto; /* Permite scroll horizontal si la tabla es muy ancha */
+    margin-bottom: 1rem;
+}
+.ingredients-summary-list {
+    list-style: none;
+    padding: 0;
+    margin: 0; /* Sin margen extra */
+    border: 1px solid var(--gray-200);
+    border-radius: var(--radius);
+    overflow: hidden;
+    min-width: 500px; /* Ancho mínimo para evitar compresión excesiva */
+}
+.ingredients-summary-list li {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.7rem 1rem;
+    border-bottom: 1px solid var(--gray-200);
+    background-color: var(--white);
+    font-size: 0.9rem;
+}
+.ingredients-summary-list li:last-child {
+    border-bottom: none;
+}
+.ingredients-summary-list li.list-header {
+    background-color: var(--gray-100);
+    font-weight: 600;
+    color: var(--gray-700);
+    font-size: 0.8rem;
+    text-transform: uppercase;
+}
+/* Ajustar anchos de columnas en la lista */
+.ingredients-summary-list li span:first-child { /* Nombre */
+    flex-grow: 1;
+    margin-right: 1rem;
+    word-break: break-word; /* Evitar desbordamiento */
+}
+.ingredients-summary-list li span:nth-child(2) { /* Costo */
+    font-weight: 500;
+    min-width: 90px; /* Ancho mínimo para costo */
+    text-align: right;
+    flex-shrink: 0;
+}
+.ingredients-summary-list li span:nth-child(3) { /* Acción */
+    min-width: 40px;
+    text-align: right;
+    flex-shrink: 0;
+}
+.ingredients-summary-list .btn-delete-ing { /* Botón Borrar */
+    background-color: var(--error-color);
+    color: white;
+    border: none;
+    border-radius: 50%;
+    width: 24px;
+    height: 24px;
+    font-size: 0.8rem;
+    font-weight: bold;
+    line-height: 24px;
+    padding: 0;
+    cursor: pointer;
+    margin-left: 1rem;
+    transition: background-color 0.2s ease;
+    flex-shrink: 0;
+}
+.ingredients-summary-list .btn-delete-ing:hover {
+     background-color: darken(var(--error-color), 10%);
+}
+.ingredients-summary-list .list-empty {
+    text-align: center;
+    color: var(--gray-500);
+    padding: 1rem;
+    background-color: var(--gray-50);
+}
+
+.ingredients-total {
+    text-align: right;
+    margin-top: 0.5rem;
+    font-size: 1.1rem;
+    color: var(--pink-800);
+    font-weight: 600;
+}
+
+/* Resultados Calculados Intermedios (Mano de Obra) */
+.calculated-result {
+    text-align: center;
+    font-size: 1.1rem;
+    margin-top: 1rem;
+    padding: 0.8rem;
+    background-color: var(--purple-100);
+    border-radius: var(--radius);
+    color: var(--purple-800);
+}
+.calculated-result strong {
+    color: var(--purple-900);
+    font-weight: 700;
+}
+
+/* Tarjeta Final de Resultados */
+.final-results-card {
+    margin-top: 2rem;
+    padding: 1.5rem;
+    border: 2px solid var(--success-color);
+    border-radius: var(--radius);
+    background-color: #f0fff4; /* Verde pálido */
+}
+.final-results-card h3 {
+    text-align: center;
+    color: var(--success-color);
+    margin-bottom: 1.5rem;
+    font-size: 1.3rem;
+}
+.final-results-card p {
+    display: flex;
+    justify-content: space-between;
+    align-items: center; /* Alinear mejor */
+    flex-wrap: wrap; /* En móvil si no cabe */
+    margin-bottom: 0.6rem;
+    padding-bottom: 0.6rem;
+    border-bottom: 1px dashed var(--gray-300);
+    text-align: left;
+    font-size: 0.95rem;
+}
+.final-results-card p:last-of-type {
+    border-bottom: none;
+}
+.final-results-card strong {
+    font-weight: 700;
+    margin-left: 0.5rem; /* Espacio antes del valor */
+    text-align: right; /* Alinear valor a la derecha */
+    flex-shrink: 0; /* Evitar que se encoja */
+}
+.final-results-card .total-cost-row {
+    font-weight: bold;
+}
+.final-results-card .total-cost-row strong {
+    color: var(--error-color);
+    font-size: 1.1em;
+}
+.final-results-card .final-price-row {
+    font-weight: bold;
+}
+.final-results-card .final-price-row strong {
+    color: var(--success-color);
+    font-size: 1.3em;
+}
+
+/* Acciones PDF */
+.pdf-actions {
+    margin-top: 1.5rem;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+}
+.pdf-actions .btn-secondary {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem; /* Espacio para icono */
+}
+.pdf-actions .btn-secondary svg {
+    width: 16px;
+    height: 16px;
+}
+.pdf-actions .btn-secondary:disabled {
+    background-color: var(--gray-300);
+    cursor: not-allowed;
+    opacity: 0.7;
+}
+
+/* Indicador de Carga (Loader) */
+.loader {
+  border: 4px solid var(--gray-200);
+  border-top: 4px solid var(--pink-500);
+  border-radius: 50%;
+  width: 25px;
+  height: 25px;
+  animation: spin 1s linear infinite;
+  margin: 0.5rem auto; /* Centrado */
+}
+.loader.hidden {
+    display: none;
+}
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+
+/* Navegación entre pasos */
+.step-nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 2rem;
+    border-top: 1px solid var(--pink-200);
+    padding-top: 1.5rem;
+    flex-wrap: wrap; /* Para móvil */
+    gap: 1rem;
+}
+/* Si solo hay un botón (ej. primer paso), alinearlo a la derecha */
+.step-nav:has(:first-child:last-child) {
+     justify-content: flex-end;
+}
+
+
+/* Media Queries para Responsividad */
+
+/* Tablets y pantallas pequeñas */
+@media (min-width: 600px) {
+    .cost-guide-container {
+        padding: 2rem;
+    }
+    .compact-form-grid {
+        grid-template-columns: repeat(2, 1fr); /* 2 columnas */
+    }
+    .form-grid:not(.compact-form-grid) { /* Grids normales */
+         grid-template-columns: 1fr 1fr;
+    }
+     .final-results-card p {
+        font-size: 1rem;
+    }
+}
+
+/* Escritorio */
+@media (min-width: 768px) {
+     .cost-guide-section {
+        padding: 3rem 0;
+    }
+     .step h2 {
+         font-size: 1.8rem;
+     }
+     .progress-steps {
+         margin-top: 0.75rem;
+     }
+     .progress-step {
+         font-size: 0.8rem;
+     }
+     .compact-form-grid {
+        grid-template-columns: repeat(4, 1fr); /* 4 columnas para ingredientes */
+        align-items: end; /* Alinear items abajo */
+    }
+    .compact-form-grid .btn-secondary {
+        grid-column: span 4; /* Botón ocupa todo el ancho */
+        margin-top: 0.5rem;
+    }
+}
+
+
+
+/* ================================ */
+/* == Estilos Modal Post-Descarga == */
+/* ================================ */
+
+.post-download-modal {
+    border: none;
+    border-radius: var(--radius);
+    box-shadow: var(--shadow-lg);
+    padding: 0; /* Quitar padding por defecto del dialog */
+    max-width: 500px;
+    width: calc(100% - 40px); /* Ancho adaptable con márgenes */
+    overflow: visible; /* Permitir que el botón de cierre sobresalga un poco */
+}
+
+/* Estilos para cuando el modal está abierto */
+.post-download-modal[open] {
+    animation: fadeInModal 0.3s ease;
+}
+
+/* Fondo oscuro detrás del modal */
+.post-download-modal::backdrop {
+    background-color: rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(3px);
+}
+
+.modal-content {
+    padding: 2rem;
+    text-align: center;
+    position: relative;
+}
+
+.modal-close-btn {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background: none;
+    border: none;
+    font-size: 1.8rem;
+    font-weight: bold;
+    color: var(--gray-400);
+    cursor: pointer;
+    line-height: 1;
+    padding: 5px;
+}
+.modal-close-btn:hover {
+    color: var(--gray-600);
+}
+
+.modal-logo-container {
+    margin-bottom: 1rem;
+}
+
+.modal-logo {
+    max-width: 150px; /* Ajusta tamaño del logo */
+    height: auto;
+}
+
+.modal-content h3 {
+    color: var(--pink-700);
+    margin-bottom: 0.75rem;
+    font-size: 1.6rem;
+}
+
+.modal-content p {
+    color: var(--purple-700);
+    margin-bottom: 1rem;
+    line-height: 1.6;
+}
+.modal-content .contribution-text {
+    font-size: 0.95rem;
+    margin-top: 1.5rem;
+    margin-bottom: 1.5rem;
+}
+
+.modal-actions {
+    display: flex;
+    flex-direction: column; /* Apilado en móvil */
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+    align-items: center; /* Centrar botones */
+}
+
+.modal-btn {
+    width: 100%; /* Ocupar ancho en móvil */
+    max-width: 280px; /* Ancho máximo de botones */
+    text-decoration: none; /* Asegurar que no haya subrayado si son <a> */
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    gap: 0.5rem; /* Espacio para iconos */
+}
+
+.modal-btn.reset-btn {
+    margin-top: 1rem; /* Espacio antes del botón de reset */
+    /* background-color: var(--gray-100); */ /* Estilo opcional */
+    /* border-color: var(--gray-300); */
+    /* color: var(--gray-700); */
+}
+
+.post-download-modal {
+    /* ... tus estilos existentes ... */
+    border: none;
+    border-radius: var(--radius);
+    box-shadow: var(--shadow-lg);
+    padding: 0;
+    max-width: 500px;
+    width: calc(100% - 40px);
+    overflow: visible;
+
+    /* --- Añade esto para centrar --- */
+    position: fixed; /* O asegúrate de que no esté anulado */
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    /* Opcional: quitar márgenes si interfieren con transform */
+    margin: 0;
+    /* --- Fin de añadidos --- */
+}
+
+/* Animación opcional */
+@keyframes fadeInModal {
+  from { opacity: 0; transform: scale(0.95); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+/* Ajuste para pantallas más grandes */
+@media (min-width: 500px) {
+    .modal-actions {
+        flex-direction: row; /* Lado a lado */
+        justify-content: center;
+    }
+    .modal-btn {
+        width: auto; /* Ancho automático */
+    }
+}
+

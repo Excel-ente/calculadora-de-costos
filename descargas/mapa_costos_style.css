@@ -1,0 +1,103 @@
+/* Estilos para el Mapa de Costos Interactivo */
+.cost-map-section {
+    padding: 3rem 0;
+    background-color: var(--purple-50); /* O el color que prefieras */
+}
+
+.cost-map-container {
+    max-width: 800px; /* Ajusta el ancho máximo */
+    margin: 2rem auto;
+}
+
+.cost-category, .cost-item {
+    margin-bottom: 1rem;
+    border: 1px solid var(--pink-200); /* Borde suave */
+    border-radius: var(--radius);
+    background-color: var(--white);
+    overflow: hidden; /* Para que el borde redondeado funcione bien */
+}
+
+.cost-category-header, .cost-item-header {
+    background-color: var(--pink-100); /* Cabecera con color */
+    padding: 1rem 1.5rem;
+    border: none;
+    width: 100%;
+    text-align: left;
+    display: flex;
+    align-items: center;
+    justify-content: space-between; /* Espacio entre elementos */
+    cursor: pointer;
+    font-family: inherit; /* Heredar fuente */
+    transition: background-color 0.2s ease;
+}
+.cost-category-header:hover, .cost-item-header:hover {
+    background-color: var(--pink-200);
+}
+
+.cost-category-header h3, .cost-item-header h4 {
+    margin: 0;
+    font-size: 1.2rem; /* Ajusta tamaño */
+    color: var(--purple-800);
+    flex-grow: 1; /* Ocupa espacio disponible */
+    padding: 0 1rem; /* Espacio alrededor del texto */
+}
+.cost-item-header h4 {
+    font-size: 1rem; /* Items un poco más pequeños */
+    color: var(--purple-700);
+}
+
+.emoji-icon, .sub-emoji-icon {
+    font-size: 1.5rem; /* Tamaño del emoji */
+}
+.sub-emoji-icon {
+    font-size: 1.2rem;
+}
+
+.toggle-icon, .toggle-icon-item {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: var(--pink-600);
+    transition: transform 0.3s ease;
+}
+
+/* Estilo cuando está activo/abierto */
+.cost-category-header.active .toggle-icon,
+.cost-item-header.active .toggle-icon-item {
+    transform: rotate(45deg); /* Gira el '+' a 'x' */
+}
+
+.cost-category-content, .cost-item-content {
+    padding: 0 1.5rem; /* Padding solo horizontal al inicio */
+    max-height: 0; /* Oculto por defecto */
+    overflow: hidden; /* Ocultar contenido que desborda */
+    transition: max-height 0.4s ease-out, padding 0.4s ease-out; /* Animación suave */
+    background-color: var(--white); /* Fondo blanco */
+}
+.cost-category-content.active, .cost-item-content.active {
+    padding: 1.5rem; /* Padding completo cuando está activo */
+    max-height: 1000px; /* Un valor grande para permitir que se expanda */
+    /* Podrías necesitar ajustar este max-height si tienes contenido muy largo */
+    border-top: 1px solid var(--pink-100); /* Línea separadora */
+}
+
+.category-explanation {
+    font-style: italic;
+    color: var(--purple-600);
+    margin-bottom: 1rem;
+    padding-bottom: 1rem;
+    border-bottom: 1px dashed var(--pink-200);
+}
+
+.cost-item-content ul {
+    list-style: disc;
+    margin-left: 1.5rem;
+    margin-bottom: 0.5rem;
+    color: var(--purple-700);
+}
+.cost-item-content p {
+    color: var(--purple-700);
+    margin-bottom: 0.5rem;
+}
+.cost-item-content p small {
+    color: var(--gray-600);
+}

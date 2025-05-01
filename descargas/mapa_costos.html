@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mapa Interactivo de Costos de Pastelería | Calculadora de Recetas</title>
+
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="mapa_costos_style.css">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+</head>
+<body>
+    <main>
+        <section class="cost-map-section">
+            <div class="container">
+                <h1>🗺️ Mapa Interactivo de Costos de Pastelería</h1>
+                <p class="section-intro">Explorá las distintas categorías de costos que debés tener en cuenta para que tu emprendimiento sea rentable. Hacé clic en cada título para ver los detalles.</p>
+
+                <div class="cost-map-container">
+
+                    <div class="cost-category">
+                        <button class="cost-category-header">
+                            <span class="emoji-icon">🛒</span>
+                            <h3>Costos Variables (Directos por Producto)</h3>
+                            <span class="toggle-icon">+</span>
+                        </button>
+                        <div class="cost-category-content">
+                            <p class="category-explanation"><em>Son los costos que cambian directamente según cuánto produzcas. Si hacés más tortas, gastás más de esto. Se calculan por cada producto vendido.</em></p>
+
+                            <div class="cost-item">
+                                <button class="cost-item-header">
+                                    <span class="sub-emoji-icon">🍰</span>
+                                    <h4>1.1 Ingredientes / Materia Prima</h4>
+                                    <span class="toggle-icon-item">+</span>
+                                </button>
+                                <div class="cost-item-content">
+                                    <p>El corazón de tus recetas. Debes calcular el costo exacto de la cantidad usada en CADA preparación.</p>
+                                    <ul>
+                                        <li>Harinas, Azúcares, Huevos, Materia Grasa, Lácteos</li>
+                                        <li>Chocolate, Dulce de Leche, Frutas</li>
+                                        <li>Esencias, Colorantes, Aditivos</li>
+                                        <li>Decoraciones Comestibles, Ingredientes específicos...</li>
+                                    </ul>
+                                    <p><small><strong>Consideraciones:</strong> Calcular costo por porción usada. Sumar % por mermas.</small></p>
+                                </div>
+                            </div>
+
+                            <div class="cost-item">
+                                <button class="cost-item-header">
+                                     <span class="sub-emoji-icon">📦</span>
+                                     <h4>1.2 Packaging / Empaque</h4>
+                                     <span class="toggle-icon-item">+</span>
+                                </button>
+                                <div class="cost-item-content">
+                                     <p>Todo lo necesario para envolver, presentar y entregar tus productos.</p>
+                                     <ul>
+                                         <li>Cajas, Bases, Cintas, Etiquetas</li>
+                                         <li>Bolsas, Papel seda/manteca, Blondas, Pirotines...</li>
+                                     </ul>
+                                     <p><small><strong>Consideraciones:</strong> Calcular costo unitario por elemento.</small></p>
+                                </div>
+                            </div>
+
+                            <div class="cost-item">
+                                <button class="cost-item-header">
+                                    <span class="sub-emoji-icon">⚡</span>
+                                    <h4>1.3 Servicios Proporcionales (Directos de Producción)</h4>
+                                    <span class="toggle-icon-item">+</span>
+                                </button>
+                                <div class="cost-item-content">
+                                    <p>La porción de luz o gas consumida ESPECÍFICAMENTE mientras producís.</p>
+                                     <ul>
+                                         <li>Consumo Luz (Horno eléctrico, batidora, etc.)</li>
+                                         <li>Consumo Gas (Horno a gas)</li>
+                                     </ul>
+                                     <p><small><strong>Consideraciones:</strong> Estimar costo por hora de uso o por fórmula de consumo.</small></p>
+                                </div>
+                            </div>
+                            </div>
+                    </div>
+                    <div class="cost-category">
+                         <button class="cost-category-header">
+                             <span class="emoji-icon">🧾</span>
+                             <h3>Costos Fijos (Generales del Negocio)</h3>
+                             <span class="toggle-icon">+</span>
+                         </button>
+                         <div class="cost-category-content">
+                              <p class="category-explanation"><em>Son los gastos que tenés todos los meses (o de forma regular), vendas mucho o poco. Hay que cubrirlos sí o sí.</em></p>
+                              <div class="cost-item">
+                                  <button class="cost-item-header">
+                                      <span class="sub-emoji-icon">💰</span>
+                                      <h4>2.1 Tu Sueldo / Retiro Emprendedor</h4>
+                                      <span class="toggle-icon-item">+</span>
+                                  </button>
+                                  <div class="cost-item-content">
+                                      <p>¡Fundamental! Es el valor de TU tiempo y esfuerzo general dedicado al negocio.</p>
+                                      <p><small><strong>Consideraciones:</strong> Definí un monto mensual y trátalo como un costo fijo.</small></p>
+                                  </div>
+                              </div>
+                              </div>
+                    </div>
+                    <div class="cost-category">
+                        <button class="cost-category-header">
+                            <span class="emoji-icon">🌱</span>
+                            <h3>Costos de Puesta en Marcha (Inversión Inicial)</h3>
+                            <span class="toggle-icon">+</span>
+                        </button>
+                        <div class="cost-category-content">
+                             <p class="category-explanation"><em>Gastos grandes que haces UNA SOLA VEZ, principalmente al empezar. Se recuperan a largo plazo.</em></p>
+                             </div>
+                    </div>
+                    <div class="cost-category">
+                        <button class="cost-category-header">
+                            <span class="emoji-icon">💡</span>
+                            <h3>Costos Ocultos (O Menos Evidentes)</h3>
+                            <span class="toggle-icon">+</span>
+                        </button>
+                        <div class="cost-category-content">
+                             <p class="category-explanation"><em>Gastos que a menudo no se tienen en cuenta al principio pero impactan.</em></p>
+                             </div>
+                    </div>
+                    </div> </div>
+        </section>
+    </main>
+
+    <script src="mapa_costos_script.js"></script>
+</body>
+</html>

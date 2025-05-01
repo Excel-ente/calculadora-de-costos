@@ -1,0 +1,1193 @@
+/* ==================== Base Styles & Variables ==================== */
+:root {
+    /* Paleta de Colores Principal (Rosa/Violeta) */
+    --pink-50: #fdf2f8;
+    --pink-100: #fce7f3;
+    --pink-200: #fbcfe8;
+    --pink-300: #f9a8d4;
+    --pink-400: #f472b6;
+    --pink-500: #ec4899; /* Color Primario */
+    --pink-600: #db2777;
+    --pink-700: #be185d;
+    --pink-800: #9d174d;
+    --pink-900: #831843;
+  
+    --purple-50: #faf5ff;
+    --purple-100: #f3e8ff;
+    --purple-200: #e9d5ff;
+    --purple-300: #d8b4fe;
+    --purple-400: #c084fc;
+    --purple-500: #a855f7; /* Color Secundario */
+    --purple-600: #9333ea;
+    --purple-700: #7e22ce; /* Color Texto Principal */
+    --purple-800: #6b21a8;
+    --purple-900: #581c87;
+  
+    /* Colores Neutros */
+    --white: #ffffff;
+    --gray-100: #f3f4f6;
+    --gray-200: #e5e7eb;
+    --gray-300: #d1d5db;
+    --gray-400: #9ca3af;
+    --gray-500: #6b7280;
+    --gray-600: #4b5563;
+  
+    /* Colores de Feedback */
+    --success-color: #10b981;
+    --warning-color: #f59e0b;
+    --error-color: #ef4444;
+  
+    /* Sombras y Bordes */
+    --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+    --shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
+    --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+    --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+    --radius: 0.5rem; /* Bordes redondeados */
+    --border-light: 1px solid var(--pink-200);
+    --border-medium: 1px solid var(--pink-300);
+  }
+  
+  /* Reset Básico */
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  body {
+    font-family: 'Poppins', sans-serif;
+    line-height: 1.6; /* Mayor interlineado para legibilidad */
+    color: var(--purple-700);
+    background: linear-gradient(to bottom, var(--pink-50), var(--white));
+    min-height: 100vh;
+    font-size: 16px; /* Base font size */
+  }
+  
+  /* Contenedor Principal */
+  .container {
+    width: 100%;
+    max-width: 1100px; /* Un poco más ancho para calculadoras complejas */
+    margin: 0 auto;
+    padding: 0 1rem; /* Padding lateral para móviles */
+  }
+  
+  /* Tipografía */
+  h1, h2, h3, h4 {
+    color: var(--pink-800);
+    font-weight: 700;
+    line-height: 1.3;
+    margin-bottom: 1rem; /* Espaciado inferior por defecto */
+  }
+  
+  h1 {
+    font-size: clamp(1.8rem, 5vw, 2.8rem); /* Tamaño fluido */
+    text-align: center;
+  }
+  
+  h2 {
+    font-size: clamp(1.5rem, 4vw, 2rem);
+    margin-bottom: 1.5rem;
+    text-align: center;
+    font-weight: 600;
+  }
+  
+  h3 {
+    font-size: clamp(1.2rem, 3.5vw, 1.5rem);
+    color: var(--purple-800);
+    font-weight: 600;
+  }
+  
+  h4 {
+    font-size: clamp(1rem, 3vw, 1.2rem);
+    color: var(--pink-700);
+    font-weight: 600;
+    margin-bottom: 0.75rem;
+  }
+  
+  p {
+    margin-bottom: 1rem;
+    color: var(--purple-600);
+  }
+  
+  a {
+    text-decoration: none;
+    color: var(--pink-600);
+    font-weight: 500;
+    transition: color 0.2s ease;
+  }
+  a:hover {
+    color: var(--pink-700);
+  }
+  
+  ul, ol {
+    padding-left: 1.5rem;
+    margin-bottom: 1.5rem;
+  }
+  li {
+    margin-bottom: 0.5rem;
+  }
+  ul {
+    list-style-type: disc; /* Estilo de lista estándar */
+  }
+  
+  /* Secciones */
+  section {
+    padding: 3rem 0; /* Espaciado vertical entre secciones */
+  }
+  
+  /* Clases Utilitarias */
+  .hidden {
+    display: none !important;
+  }
+  .text-center {
+    text-align: center;
+  }
+  .small-text {
+      font-size: 0.85rem;
+      color: var(--gray-500);
+  }
+  .disclaimer {
+      font-size: 0.8rem;
+      color: var(--gray-500);
+      margin-top: 1rem;
+      text-align: center;
+  }
+  .full-width {
+      width: 100%;
+      display: block; /* Para que ocupe el ancho */
+      margin-top: 0.5rem;
+  }
+  .small-margin { margin-bottom: 0.5rem !important; }
+  
+  
+  /* ==================== Botones ==================== */
+  .btn {
+    display: inline-block;
+    padding: 0.75rem 1.5rem; /* Ajuste de padding */
+    border-radius: 9999px; /* Botón redondeado */
+    font-weight: 600;
+    font-size: 0.95rem;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    text-align: center;
+    border: none;
+    line-height: 1.2; /* Asegurar alineación vertical */
+  }
+  
+  .btn-primary {
+    background-color: var(--pink-500);
+    color: var(--white);
+    box-shadow: var(--shadow);
+  }
+  .btn-primary:hover {
+    background-color: var(--pink-600);
+    box-shadow: var(--shadow-md);
+  }
+  
+  .btn-secondary {
+    background-color: var(--purple-500);
+    color: var(--white);
+  }
+  .btn-secondary:hover {
+    background-color: var(--purple-600);
+  }
+  
+  .btn-outline {
+    background-color: transparent;
+    border: 1px solid var(--pink-300);
+    color: var(--pink-700);
+    padding: 0.6rem 1.2rem; /* Ligeramente más pequeño */
+    border-radius: var(--radius); /* Puede ser menos redondeado */
+    font-size: 0.9rem;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+  .btn-outline:hover {
+    background-color: var(--pink-100);
+    border-color: var(--pink-400);
+  }
+  
+  .btn-delete-row {
+      background-color: var(--error-color);
+      color: white;
+      border: none;
+      border-radius: 50%;
+      width: 25px;
+      height: 25px;
+      font-size: 0.8rem;
+      font-weight: bold;
+      cursor: pointer;
+      line-height: 25px; /* Centrar el 'X' */
+      padding: 0;
+      transition: background-color 0.2s ease;
+  }
+  .btn-delete-row:hover {
+      background-color: darken(var(--error-color), 10%);
+  }
+  
+  .btn-link {
+      background: none;
+      border: none;
+      color: var(--pink-600);
+      text-decoration: underline;
+      cursor: pointer;
+      font-size: 0.85rem;
+      padding: 0;
+      margin-top: 0.25rem;
+  }
+  .btn-link:hover {
+      color: var(--pink-700);
+  }
+  
+  
+  /* ==================== Estilos de Formularios ==================== */
+  .form-grid {
+    display: grid;
+    grid-template-columns: 1fr; /* Mobile first */
+    gap: 1.2rem;
+    margin-bottom: 1.5rem;
+  }
+  
+  .form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem; /* Espacio entre label e input */
+  }
+  
+  .form-group label {
+    font-weight: 500;
+    font-size: 0.9rem;
+    color: var(--purple-700);
+    display: flex; /* Para alinear tooltip */
+    align-items: center;
+  }
+  
+  .form-group input[type="text"],
+  .form-group input[type="number"],
+  .form-group select {
+    padding: 0.75rem;
+    border: var(--border-light);
+    border-radius: var(--radius);
+    font-size: 1rem;
+    font-family: inherit;
+    width: 100%; /* Ocupar todo el ancho disponible */
+    background-color: var(--white);
+  }
+  .form-group input[type="number"] {
+    appearance: textfield; /* Ocultar flechas en Firefox */
+  }
+  .form-group input[type="number"]::-webkit-outer-spin-button,
+  .form-group input[type="number"]::-webkit-inner-spin-button {
+    -webkit-appearance: none; /* Ocultar flechas en Chrome/Safari */
+    margin: 0;
+  }
+  
+  .form-group input:focus, .form-group select:focus {
+    outline: none;
+    border-color: var(--pink-400);
+    box-shadow: 0 0 0 2px var(--pink-100); /* Indicador de foco */
+  }
+  
+  .input-with-select {
+    display: flex;
+    gap: 0.5rem;
+  }
+  .input-with-select input {
+    flex: 1; /* El input ocupa el espacio restante */
+  }
+  .input-with-select select {
+    width: auto; /* Ancho automático basado en contenido */
+    min-width: 80px; /* Ancho mínimo */
+    flex-shrink: 0; /* Evitar que se encoja */
+  }
+  
+  /* Tooltips */
+  .tooltip {
+    position: relative;
+    display: inline-block;
+    margin-left: 0.3rem;
+  }
+  .tooltip .tooltip-icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 18px;
+    height: 18px;
+    background-color: var(--pink-300);
+    color: white;
+    border-radius: 50%;
+    font-size: 11px;
+    font-weight: bold;
+    cursor: help;
+  }
+  .tooltip .tooltip-text {
+    visibility: hidden;
+    width: 220px; /* Ancho del tooltip */
+    background-color: var(--purple-800);
+    color: white;
+    text-align: left;
+    border-radius: var(--radius);
+    padding: 0.8rem;
+    position: absolute;
+    z-index: 10;
+    bottom: 130%; /* Posición arriba del icono */
+    left: 50%;
+    transform: translateX(-50%);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    font-size: 0.85rem;
+    font-weight: normal;
+    box-shadow: var(--shadow-md);
+    pointer-events: none; /* Evitar que interfiera con el hover */
+  }
+  .tooltip .tooltip-text::after { /* Flecha del tooltip */
+    content: "";
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    margin-left: -5px;
+    border-width: 5px;
+    border-style: solid;
+    border-color: var(--purple-800) transparent transparent transparent;
+  }
+  .tooltip:hover .tooltip-text {
+    visibility: visible;
+    opacity: 1;
+  }
+  
+  /* Advertencias de Unidades */
+  .unit-warning {
+    color: var(--error-color);
+    font-size: 0.8rem;
+    margin-top: 0.25rem;
+    font-weight: 500;
+  }
+  
+  /* Estilos específicos para resultados */
+  .result-card {
+    background-color: var(--pink-50);
+    border: var(--border-light);
+    border-radius: var(--radius);
+    padding: 1.5rem;
+    margin-top: 1.5rem;
+    text-align: center;
+    box-shadow: var(--shadow-sm);
+  }
+  .result-card h3 {
+    margin-bottom: 0.5rem;
+    color: var(--purple-800);
+  }
+  .result-card p {
+    font-size: 1.1rem; /* Tamaño ajustado */
+    font-weight: 600;
+    color: var(--pink-700);
+    margin-bottom: 1rem;
+  }
+  .result-actions {
+    display: flex;
+    justify-content: center;
+    gap: 0.75rem;
+    flex-wrap: wrap; /* Para que quepan en móvil */
+  }
+  
+  /* Información de cálculo */
+  .calculation-info {
+    background-color: var(--purple-50);
+    border: 1px solid var(--purple-200);
+    border-radius: var(--radius);
+    padding: 1rem;
+    margin-bottom: 1.5rem;
+    font-size: 0.9rem;
+  }
+  .calculation-info h4 { margin-bottom: 0.5rem; color: var(--purple-700); }
+  .calculation-info p { margin-bottom: 0.5rem; color: var(--purple-700); }
+  .calculation-formula {
+    background-color: var(--white);
+    padding: 0.7rem;
+    border-radius: var(--radius);
+    border: 1px solid var(--purple-200);
+    text-align: center;
+    font-weight: 500;
+    color: var(--purple-800);
+    margin-top: 0.5rem;
+    font-size: 0.85rem; /* Más pequeño */
+  }
+  
+  /* ==================== Estructura General de Secciones ==================== */
+  .section-intro {
+    max-width: 700px; /* Ancho máximo para intros */
+    margin: 0 auto 2rem;
+    text-align: center;
+    font-size: 1.05rem;
+    color: var(--purple-600);
+  }
+  
+  /* Hero Section */
+  .hero {
+    text-align: center;
+    padding: 3rem 0 2rem 0; /* Menos padding inferior */
+  }
+  .hero h1 { margin-bottom: 0.5rem; }
+  .hero .intro-text {
+    font-size: 1.1rem;
+    color: var(--purple-700);
+    margin-bottom: 2rem;
+    max-width: 650px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  
+  /* Calculadora de Insumos */
+  .calculator-section { padding-bottom: 2rem; }
+  .calculator-card {
+    background-color: var(--white);
+    border-radius: var(--radius);
+    box-shadow: var(--shadow-lg);
+    padding: 1.5rem;
+    max-width: 700px; /* Ajuste de ancho */
+    margin: 0 auto;
+  }
+  
+  /* Sección Educativa Básica */
+  .basic-concepts { background-color: var(--purple-50); }
+  .edu-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 1.5rem;
+      margin-bottom: 2.5rem;
+  }
+  .edu-card {
+      background-color: var(--white);
+      border: var(--border-light);
+      border-radius: var(--radius);
+      overflow: hidden;
+      box-shadow: var(--shadow);
+      display: flex; /* Para alinear contenido */
+      flex-direction: column;
+  }
+  .edu-card-header {
+      background-color: var(--pink-100);
+      padding: 0.8rem 1rem;
+  }
+  .edu-card-header h3 { margin: 0; text-align: center; font-size: 1.1rem; }
+  .edu-card-content {
+      padding: 1rem 1.5rem;
+      flex-grow: 1; /* Para que ocupe espacio */
+  }
+  .edu-card-content p { font-size: 0.95rem; margin-bottom: 0.8rem; }
+  .edu-card-content ul { margin-bottom: 0; padding-left: 1.2rem; }
+  .edu-card-content li { font-size: 0.9rem; margin-bottom: 0.3rem; }
+  
+  /* Nota sobre Valor del Tiempo */
+  .value-time-note {
+      background-color: var(--white);
+      border: 1px solid var(--purple-300);
+      border-radius: var(--radius);
+      padding: 1.5rem;
+      text-align: center;
+      margin: 2rem auto;
+      max-width: 650px;
+      box-shadow: var(--shadow-md);
+  }
+  .value-time-note h3 { color: var(--purple-800); }
+  .value-time-note p { color: var(--purple-700); font-size: 1rem;}
+  
+  /* Fórmula Simplificada */
+  .formula-card.simplified {
+      background-color: var(--white);
+      border: var(--border-light);
+      border-radius: var(--radius);
+      overflow: hidden;
+      box-shadow: var(--shadow);
+      margin-bottom: 1rem; /* Menos margen */
+  }
+  .formula-card.simplified .formula-card-header { padding: 0.8rem 1rem; background-color: var(--pink-100); }
+  .formula-card.simplified .formula-card-header h3 { margin: 0; text-align: center; font-size: 1.1rem; }
+  .formula-card.simplified .formula-card-content { padding: 1rem 1.5rem; }
+  .formula-card.simplified .formula-box {
+      background-color: var(--pink-50);
+      border: var(--border-light);
+      padding: 0.8rem;
+      text-align: center;
+      margin-bottom: 1rem;
+      font-weight: 600;
+      color: var(--purple-800);
+  }
+  .formula-card.simplified .formula-box p { margin: 0; font-size: 0.95rem; }
+  
+  /* Calculadora Gastos Fijos */
+  .fixed-costs-section { background-color: var(--purple-50); }
+  .fixed-costs-calculator {
+      background-color: var(--white);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow-md);
+      padding: 1.5rem;
+      max-width: 800px;
+      margin: 0 auto;
+  }
+  .fixed-costs-grid { gap: 1rem; } /* Menos gap */
+  .fixed-costs-calculator h4 { font-size: 1.1rem; margin-bottom: 1rem; text-align: center; }
+  .fixed-costs-total {
+      background-color: var(--pink-100);
+      border-radius: var(--radius);
+      padding: 1rem;
+      text-align: center;
+      margin: 1.5rem 0;
+  }
+  .fixed-costs-total h4 { margin: 0; color: var(--purple-800); }
+  .fixed-costs-total span { font-weight: 700; color: var(--pink-700); }
+  .fixed-costs-distribution {
+      background-color: var(--pink-50);
+      border: var(--border-light);
+      border-radius: var(--radius);
+      padding: 1.5rem;
+      margin-top: 1.5rem;
+  }
+  .distribution-result { margin-top: 1rem; text-align: center; }
+  .distribution-result h4 { margin-bottom: 0.5rem; }
+  .distribution-result span { font-weight: 700; color: var(--pink-700); }
+  .distribution-result p { font-size: 0.9rem; margin-bottom: 0; }
+  
+  /* ==================== Ejemplo Práctico Torta / Calculadora Recetas ==================== */
+  .cake-example-section, .recipe-creator-section {
+    background-color: var(--white);
+  }
+  
+  /* Estilo General para las calculadoras grandes */
+  .cake-tabs, .recipe-creator-card {
+    max-width: 1000px;
+    margin: 0 auto;
+    border: var(--border-medium);
+    border-radius: var(--radius);
+    overflow: hidden;
+    box-shadow: var(--shadow-lg);
+    background-color: var(--white);
+  }
+  
+  /* Pestañas (Tabs) */
+  .tabs-header {
+    display: flex;
+    overflow-x: auto; /* Scroll horizontal en móvil */
+    background-color: var(--pink-50);
+    border-bottom: var(--border-medium);
+    -webkit-overflow-scrolling: touch; /* Scroll suave en iOS */
+    scrollbar-width: thin; /* Scrollbar fino en Firefox */
+  }
+  .tab-btn {
+    padding: 0.8rem 1rem; /* Ajuste padding */
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-weight: 600;
+    font-size: 0.85rem; /* Más pequeño */
+    color: var(--purple-600);
+    white-space: nowrap; /* Evitar salto de línea */
+    border-bottom: 3px solid transparent;
+    transition: all 0.2s ease;
+    flex-shrink: 0; /* Evitar que se encojan */
+  }
+  .tab-btn:hover { background-color: var(--pink-100); }
+  .tab-btn.active {
+    color: var(--pink-700);
+    border-bottom-color: var(--pink-500);
+    background-color: var(--white);
+  }
+  .tabs-content { padding: 1.5rem; } /* Padding interno de tabs */
+  .tab-content { display: none; }
+  .tab-content.active { display: block; animation: fadeIn 0.5s ease; }
+  
+  @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+  
+  /* Estilos para Tablas Responsivas */
+  .responsive-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 1.5rem;
+    font-size: 0.9rem; /* Tamaño de fuente en tabla */
+    overflow: hidden; /* Para bordes redondeados */
+    box-shadow: var(--shadow-sm);
+  }
+  .responsive-table thead th {
+    background-color: var(--pink-100);
+    padding: 0.6rem 0.8rem;
+    text-align: left;
+    font-weight: 600;
+    color: var(--purple-800);
+  }
+  .responsive-table tbody td {
+    padding: 0.6rem 0.8rem;
+    border-top: var(--border-light);
+    vertical-align: middle; /* Alinear verticalmente */
+  }
+  .responsive-table tbody tr:nth-child(even) { background-color: var(--pink-50); }
+  .responsive-table tfoot td { font-weight: 600; background-color: var(--pink-100); }
+  .total-label { text-align: right; padding-right: 0.5rem; }
+  .total-value { font-weight: 700; color: var(--pink-700); text-align: right; }
+  
+  /* Hacer tablas scrollables en móvil */
+  @media (max-width: 767px) {
+      .tabs-header { padding-bottom: 5px; } /* Espacio para scrollbar */
+      .responsive-table {
+          display: block;
+          overflow-x: auto;
+          white-space: nowrap;
+          -webkit-overflow-scrolling: touch;
+      }
+      .responsive-table thead, .responsive-table tbody, .responsive-table tfoot, .responsive-table tr {
+          display: table; /* Forzar comportamiento de tabla */
+          width: 100%;
+      }
+      .responsive-table th, .responsive-table td {
+          display: table-cell;
+          white-space: nowrap; /* Evitar saltos de línea */
+          min-width: 100px; /* Ancho mínimo de columna */
+      }
+      .responsive-table td:last-child, .responsive-table th:last-child {
+          min-width: 50px; /* Columna de acción más pequeña */
+      }
+  }
+  
+  /* Formularios dentro de las calculadoras */
+  .add-ingredient-form {
+    background-color: var(--purple-50);
+    border: 1px solid var(--purple-200);
+    border-radius: var(--radius);
+    padding: 1rem;
+    margin-top: 1rem;
+  }
+  .add-ingredient-form h4 { margin-bottom: 1rem; text-align: center; }
+  .compact-form-row {
+      grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); /* Columnas flexibles */
+      gap: 0.8rem;
+  }
+  .example-form { background-color: var(--pink-50); border-color: var(--pink-200); } /* Diferenciar visualmente */
+  
+  /* Navegación entre Pestañas */
+  .next-step {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 2rem;
+    flex-wrap: wrap; /* Para móvil */
+    gap: 1rem;
+    border-top: var(--border-light);
+    padding-top: 1.5rem;
+  }
+  .next-step p { margin-bottom: 0; font-size: 0.9rem; }
+  
+  /* Estilos Específicos Pestaña Horneado */
+  .baking-calculator .baking-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); /* Adaptable */
+      gap: 1.5rem;
+      margin-bottom: 1.5rem;
+  }
+  .baking-card {
+      background-color: var(--white);
+      border: var(--border-light);
+      border-radius: var(--radius);
+      padding: 1.2rem;
+      box-shadow: var(--shadow);
+  }
+  .result-box {
+      background-color: var(--pink-50);
+      border: var(--border-light);
+      border-radius: var(--radius);
+      padding: 0.8rem;
+      margin-top: 1rem;
+      text-align: center;
+  }
+  .result-box p { margin: 0; font-size: 0.95rem; font-weight: 500; }
+  .result-box span { font-weight: 700; color: var(--pink-700); }
+  .baking-total {
+      background-color: var(--pink-100);
+      border-radius: var(--radius);
+      padding: 1rem;
+      text-align: center;
+      font-weight: 600;
+  }
+  .baking-total span { color: var(--pink-700); font-weight: 700; }
+  
+  /* Estilos Específicos Pestaña Tiempo */
+  .time-calculator .time-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 1.5rem;
+      margin-bottom: 1.5rem;
+  }
+  .time-card { /* Reutilizar estilo de baking-card */
+      background-color: var(--white);
+      border: var(--border-light);
+      border-radius: var(--radius);
+      padding: 1.2rem;
+      box-shadow: var(--shadow);
+  }
+  .time-results {
+      background-color: var(--pink-50);
+      border-radius: var(--radius);
+      padding: 1rem;
+      margin-top: 1rem;
+  }
+  .result-item {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 0.5rem;
+      font-size: 0.95rem;
+      padding-bottom: 0.5rem;
+      border-bottom: 1px dashed var(--pink-200);
+  }
+  .result-item:last-child { border-bottom: none; margin-bottom: 0; padding-bottom: 0; }
+  .result-item span:first-child { color: var(--purple-700); }
+  .result-item span:last-child, .result-item strong { color: var(--pink-700); font-weight: 700; }
+  .result-item.highlight span:last-child { font-size: 1.1rem; }
+  
+  /* Estilos Específicos Pestaña Total */
+  .total-calculator .total-summary {
+      display: grid;
+      grid-template-columns: 1fr; /* Mobile first */
+      gap: 2rem;
+      margin-bottom: 2rem;
+  }
+  .subtotal-row td { background-color: var(--pink-50); font-weight: 600; }
+  .total-row td { background-color: var(--pink-100); font-weight: 700; font-size: 1rem; }
+  .profit-calculator {
+      background-color: var(--white);
+      border: var(--border-light);
+      border-radius: var(--radius);
+      padding: 1.5rem;
+      box-shadow: var(--shadow);
+  }
+  .percentage-display {
+      display: inline-block;
+      margin-left: 0.5rem;
+      font-weight: 600;
+      color: var(--pink-600);
+  }
+  .profit-result {
+      background-color: var(--pink-50);
+      border-radius: var(--radius);
+      padding: 1rem;
+      margin-top: 1rem;
+  }
+  .profit-result .result-item.highlight {
+      font-size: 1.1rem; /* Resaltar precio final */
+      color: var(--pink-800);
+  }
+  .profit-result .result-item.highlight span:last-child {
+      font-size: 1.2rem;
+  }
+  
+  /* Tips (Baking, Packaging, Pricing) */
+  .baking-tips, .packaging-tips, .pricing-tips {
+      background-color: var(--purple-50);
+      border: 1px solid var(--purple-200);
+      border-radius: var(--radius);
+      padding: 1.2rem;
+      margin: 2rem 0;
+      font-size: 0.9rem;
+  }
+  .baking-tips h4, .packaging-tips h4, .pricing-tips h4 {
+      color: var(--purple-700);
+      margin-bottom: 0.8rem;
+  }
+  .baking-tips ul, .packaging-tips ul, .pricing-tips ul {
+      list-style-type: disc;
+      padding-left: 1.2rem;
+      margin-bottom: 0;
+  }
+  .baking-tips li, .packaging-tips li, .pricing-tips li {
+      margin-bottom: 0.4rem;
+  }
+  
+  /* ==================== Calculadora de Recetas Propias ==================== */
+  .recipe-creator-section { background-color: var(--purple-50); }
+  .recipe-creator-card { padding: 1.5rem; }
+  .recipe-part {
+      margin-bottom: 2rem;
+      padding-bottom: 1.5rem;
+      border-bottom: 1px dashed var(--pink-300);
+  }
+  .recipe-part:last-of-type { border-bottom: none; margin-bottom: 0; }
+  .recipe-part h3 {
+      border-bottom: 2px solid var(--pink-400);
+      padding-bottom: 0.5rem;
+      display: inline-block; /* Para que el borde no ocupe todo */
+      margin-bottom: 1.5rem;
+  }
+  .recipe-ingredients-table tfoot td { background-color: var(--white); } /* Fondo diferente */
+  
+  /* Grillas específicas de la calculadora de recetas */
+  .other-costs-grid, .time-grid, .final-calc-grid {
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 1rem;
+  }
+  .result-display {
+      background-color: var(--pink-50);
+      padding: 0.75rem;
+      border-radius: var(--radius);
+      border: var(--border-light);
+      text-align: center;
+  }
+  .result-display label { font-weight: 500; margin-bottom: 0.3rem; display: block; }
+  .result-display span { font-weight: 700; font-size: 1.1rem; color: var(--pink-700); }
+  
+  .recipe-results {
+      background-color: var(--pink-100);
+      border-radius: var(--radius);
+      padding: 1.5rem;
+      margin-top: 2rem;
+      border: 1px solid var(--pink-300);
+  }
+  .recipe-results h3 { text-align: center; }
+  .recipe-results .results-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 0.8rem;
+      margin-bottom: 1.5rem;
+  }
+  .recipe-results .result-item { /* Reutilizar estilo */
+      border-bottom-color: var(--pink-300);
+      background-color: var(--white);
+      padding: 0.5rem 0.8rem;
+      border-radius: 4px;
+  }
+  .total-cost-row { background-color: var(--pink-200) !important; font-weight: bold; }
+  .final-price-row { background-color: var(--purple-200) !important; font-weight: bold; }
+  .final-price-row strong { color: var(--purple-900); font-size: 1.2em; }
+  
+  
+  /* ==================== Estrategias de Precios ==================== */
+  .pricing-strategies-section { background-color: var(--white); }
+  .strategies-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 1.5rem;
+      margin-bottom: 2.5rem;
+  }
+  .strategy-card {
+      background-color: var(--white);
+      border: var(--border-light);
+      border-radius: var(--radius);
+      padding: 1.5rem;
+      box-shadow: var(--shadow);
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+      display: flex;
+      flex-direction: column;
+  }
+  .strategy-card:hover {
+      transform: translateY(-4px);
+      box-shadow: var(--shadow-md);
+  }
+  .strategy-icon {
+      font-size: 2rem;
+      margin-bottom: 0.8rem;
+      text-align: center;
+  }
+  .strategy-card h3 { text-align: center; margin-bottom: 0.8rem; font-size: 1.15rem; }
+  .strategy-card p { font-size: 0.95rem; flex-grow: 1; } /* Texto ocupa espacio */
+  .strategy-card p strong { color: var(--pink-700); }
+  
+  .pricing-recommendation {
+      background-color: var(--pink-50);
+      border: 1px solid var(--pink-200);
+      border-radius: var(--radius);
+      padding: 1.5rem;
+      max-width: 800px;
+      margin: 0 auto;
+      text-align: center;
+  }
+  .pricing-recommendation h3 { margin-bottom: 0.8rem; }
+  .pricing-recommendation p { font-size: 1rem; }
+  .pricing-recommendation strong { color: var(--purple-800); }
+  
+  
+  /* ==================== Recursos y Descargas ==================== */
+  .articles-section { background-color: var(--purple-50); }
+  .articles-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); /* Columnas flexibles */
+      gap: 1.5rem;
+      margin-bottom: 3rem;
+  }
+  .article-card {
+      background-color: var(--white);
+      border: var(--border-light);
+      border-radius: var(--radius);
+      padding: 1.5rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      box-shadow: var(--shadow);
+      transition: box-shadow 0.3s ease;
+  }
+  .article-card:hover { box-shadow: var(--shadow-md); }
+  .article-icon { font-size: 2rem; margin-bottom: 0.8rem; }
+  .article-card h3 { margin-bottom: 0.5rem; font-size: 1.1rem; }
+  .article-card p { font-size: 0.9rem; margin-bottom: 1rem; flex-grow: 1; }
+  .article-card .btn-outline { margin-top: auto; /* Botón abajo */ }
+  
+  /* Sección Descargas Excel */
+  .download-section {
+      margin-top: 3rem;
+      padding-top: 2rem;
+      border-top: 1px solid var(--pink-300);
+      text-align: center;
+  }
+  .download-links {
+      display: flex;
+      justify-content: center;
+      gap: 1rem;
+      flex-wrap: wrap; /* Para que quepan en móvil */
+      margin-top: 1rem;
+  }
+  .download-section h2 { font-size: 1.5rem; }
+  .download-section p { max-width: 600px; margin-left: auto; margin-right: auto; }
+  .download-section .btn-outline { background-color: var(--white); } /* Fondo blanco */
+  
+  
+  /* ==================== Footer ==================== */
+  footer {
+    background-color: var(--pink-100);
+    padding: 2.5rem 0;
+    text-align: center;
+    margin-top: 3rem; /* Separación de la última sección */
+  }
+  .footer-cta { font-size: 1.1rem; font-weight: 500; margin-bottom: 1rem; }
+  .social-links {
+    display: flex;
+    justify-content: center;
+    gap: 1.2rem;
+    margin: 1.5rem 0;
+  }
+  .social-links a svg {
+    width: 24px;
+    height: 24px;
+    color: var(--purple-600);
+    transition: color 0.2s ease;
+  }
+  .social-links a:hover svg { color: var(--purple-800); }
+  .footer-note { max-width: 500px; margin: 0 auto 1rem; font-size: 0.9rem; }
+  .copyright { font-size: 0.85rem; color: var(--purple-600); }
+  
+  
+  /* ==================== Media Queries para Responsividad ==================== */
+  @media (min-width: 768px) {
+    /* Ajustes para Tablets y Escritorio */
+    .container { padding: 0 1.5rem; }
+    .form-grid { grid-template-columns: 1fr 1fr; } /* 2 columnas en formularios */
+    .fixed-costs-grid { grid-template-columns: 1fr 1fr 1fr; } /* 3 columnas gastos fijos */
+    .edu-grid { grid-template-columns: 1fr 1fr; } /* 2 columnas en educacional */
+    .tabs-content { padding: 2rem; }
+    .total-calculator .total-summary { grid-template-columns: 1fr 1fr; } /* 2 columnas en resumen total */
+    .strategies-grid { grid-template-columns: 1fr 1fr 1fr; } /* 3 columnas en estrategias */
+  }
+  
+  @media (min-width: 1024px) {
+    /* Ajustes para Escritorio Grande */
+    body { font-size: 16px; } /* Restaurar tamaño base si se cambió */
+    section { padding: 4rem 0; }
+    .compact-form-row { grid-template-columns: repeat(4, 1fr); } /* 4 columnas en forms compactos */
+    .other-costs-grid, .time-grid, .final-calc-grid {
+        grid-template-columns: repeat(3, 1fr); /* 3 columnas */
+    }
+  }
+
+
+  /* ========================================== */
+  /* == Estilos Botón Flotante (FAB) Link === */
+  /* ========================================== */
+
+  /* Estilos para el Header y Logo */
+  .site-header {
+      padding: 3rem 0; /* Espacio arriba y abajo del logo */
+      background-color: transparent; /* O el color que prefieras */
+  }
+
+  .logo-container {
+      text-align: center; /* Centrar el logo */
+  }
+
+  .logo-image {
+      max-height: 260px; /* Ancho máximo del logo, ajústalo */
+      width: auto; /* Mantener proporción */
+  }
+  .fab.fab-link {
+      position: fixed;
+      bottom: 25px;
+      right: 25px;
+      width: 60px;
+      height: 60px;
+      background-color: var(--pink-500); /* Color primario */
+      color: var(--white);
+      border-radius: 50%;
+      box-shadow: var(--shadow-lg); /* Sombra definida en :root */
+      display: flex; /* Para centrar el icono */
+      justify-content: center;
+      align-items: center;
+      text-decoration: none; /* Quitar subrayado del link */
+      z-index: 1000; /* Asegurar que esté por encima */
+      transition: transform 0.2s ease, background-color 0.2s ease;
+  }
+
+  .fab.fab-link:hover {
+      background-color: var(--pink-600); /* Color más oscuro al pasar el mouse */
+      transform: scale(1.1); /* Efecto de agrandar */
+      color: var(--white); /* Asegurar que el icono siga blanco */
+  }
+
+  .fab.fab-link svg {
+      width: 24px; /* Ajusta tamaño del icono */
+      height: 24px;
+      fill: currentColor; /* Hereda el color (blanco) */
+  }
+
+  /* Ajuste para móviles pequeños */
+  @media (max-width: 480px) {
+      .fab.fab-link {
+          width: 55px;
+          height: 55px;
+          bottom: 20px;
+          right: 20px;
+      }
+  }
+
+
+/* Estilo para el mensaje de suscripción en el footer */
+.subscribe-pitch {
+  font-size: 0.95rem;
+  color: var(--purple-700); /* O un color que destaque un poco */
+  max-width: 600px; /* Limitar ancho */
+  margin: 1.5rem auto; /* Espaciado */
+  line-height: 1.5;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* ======================================== */
+/* == Estilos para Tarjeta de Descarga (v2) == */
+/* ======================================== */
+
+.download-card {
+  background-color: var(--white);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-lg);
+  overflow: hidden; /* Importante para bordes redondeados e imagen */
+  margin: 2.5rem auto; /* Más margen vertical y centrado horizontal */
+  max-width: 850px;
+  /* Mobile First: Usar display: block o flex column por defecto */
+  display: block; /* Simple block layout para móvil */
+}
+
+.download-visual {
+  line-height: 0; /* Evita espacio extra debajo de la img */
+  background-color: var(--pink-50); /* Fondo suave opcional */
+}
+
+.download-visual img {
+  display: block; /* Asegura que sea block-level */
+  width: 100%; /* Ancho completo del contenedor */
+  max-width: 100%; /* No desbordar */
+  height: auto; /* Mantener proporción */
+  /* object-fit: cover; */ /* Puedes descomentar si quieres que cubra siempre */
+}
+
+/* Estilo si usas solo el logo */
+.download-visual .download-logo-only {
+  max-width: 180px;
+  padding: 2.5rem; /* Más padding alrededor del logo solo */
+  margin: 0 auto;
+}
+
+.download-content {
+  padding: 1.5rem; /* Padding generoso en móvil */
+  text-align: center; /* Centrado en móvil */
+}
+
+.download-content h2 {
+  font-size: 1.5rem;
+  color: var(--pink-800);
+  margin-bottom: 0.75rem;
+}
+
+.download-content p {
+  font-size: 1rem;
+  color: var(--purple-700);
+  margin-bottom: 0.5rem;
+  line-height: 1.6;
+}
+.download-content p small {
+  font-size: 0.85rem;
+  color: var(--gray-500);
+  display: block;
+  margin-top: 0.25rem;
+}
+
+.download-content .btn {
+  margin-top: 1.5rem;
+  display: inline-flex;
+  align-items: center;
+}
+
+/* --- Media Query para Tablets y Desktops --- */
+@media (min-width: 768px) {
+  .download-card {
+      display: grid; /* Cambiar a Grid */
+      grid-template-columns: minmax(0, 400px) 1fr; /* Columna izq. máx 400px, Columna der. toma el resto */
+      /* grid-template-columns: 40% 1fr; /* Alternativa con porcentaje */
+      align-items: center; /* Alinear verticalmente al centro */
+      text-align: left; /* Alinear texto a la izquierda por defecto */
+  }
+
+  .download-visual {
+      /* Grid se encarga del tamaño */
+      height: 100%; /* Ocupar toda la altura de la fila del grid */
+      display: flex; /* Para centrar la imagen si es necesario */
+      align-items: center;
+      justify-content: center;
+  }
+
+  .download-visual img {
+      height: 100%; /* Intentar que la imagen ocupe la altura */
+      object-fit: cover; /* Cubrir el espacio asignado */
+  }
+   .download-visual .download-logo-only {
+       /* Ajustar padding si es necesario para desktop */
+       padding: 2rem;
+   }
+
+  .download-content {
+      padding: 2rem 2.5rem; /* Más padding horizontal */
+      text-align: left; /* Asegurar alineación izquierda */
+  }
+
+   .download-content h2 {
+      font-size: 1.7rem;
+   }
+
+  .download-content .btn {
+     /* No es necesario align-self con text-align: left */
+  }
+}
+
+/* Opcional: Ajuste fino para pantallas muy anchas */
+@media (min-width: 1024px) {
+   .download-content {
+      padding: 2.5rem 3rem;
+  }
+   .download-content h2 {
+      font-size: 1.8rem;
+   }
+}
